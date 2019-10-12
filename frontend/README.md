@@ -1,5 +1,7 @@
 # frontend
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bf99eedf-1464-434b-b83b-e9e5a6b5d96a/deploy-status)](https://app.netlify.com/sites/cocky-wescoff-3d64c5/deploys)
+
 ## Project setup
 ```
 yarn install
