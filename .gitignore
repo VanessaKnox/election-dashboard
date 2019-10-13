@@ -3,3 +3,13 @@ logs
 *.log
 log.md
 npm-debug.log*
+
+# Data ETL artifacts
+data/states.zip
+data/**/**.cpg
+data/**/**.dbf
+data/**/**.prj
+data/**/**.html
+data/**/**.shp
+data/**/**.shx
+data/**/**.txt
