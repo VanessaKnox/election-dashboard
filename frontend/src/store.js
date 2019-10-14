@@ -7,10 +7,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     states: {}, // for state geojson
-    results: {} // for election results
+    results: {}, // for election results
+    newResults: []
   },
   // mutations make changes to state
   mutations: {
+    ADD_RESULT(state, result) {
+      // append submitted result to array
+      state.newResults.push(JSON.stringify(result)); // stringify to serialize input data
+    },
     FETCH_DATA(state, data) {
       state.states = data.states;
       state.results = data.results;
@@ -18,6 +23,9 @@ export default new Vuex.Store({
   },
   // actions called by components to mutate state
   actions: {
+    addResult({ commit }, result) {
+      commit("ADD_RESULT", result);
+    },
     fetchData({ commit }) {
       const electionUrl =
         "https://gist.githubusercontent.com/bfreeds/16bb7a411f1c88a4d988391071cfd850/raw/ce6be9621ec0452ec3c484e3553ae9eb5baea51e/elections.json";
