@@ -1,15 +1,23 @@
-# Prompt
+# Election Results Dashboard  
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bf99eedf-1464-434b-b83b-e9e5a6b5d96a/deploy-status)](https://app.netlify.com/sites/cocky-wescoff-3d64c5/deploys)
+### Data  
+##### States Geographic Data  
+Geographic data for state polygons accessed from [Natural Earth's 50m Cultural datasets](https://www.naturalearthdata.com/downloads/50m-cultural-vectors/).  The ETL process for getting, filtering, and simplifying this dataset is stored in the [Makefile](./Makefile) in this repo.  
 
-You’re a software developer with a presidential campaign. The campaign manager has provided the previous presidential election results by state/year/candidate in JSON format. 
+To reproduce, run:
+```shell
+Make
+```  
 
-Your task is to build a web dashboard with an interactive map to visualize the data. You may use any JavaScript libraries you need.
+The filtered and simplified geojson is being hosted as a [gist](https://gist.github.com/bfreeds/6a93787b13e2c458bda2bffc09b9120b).  
 
-The dashboard should have a simple form that allows a user to enter a state, candidate name, and vote total and then submit it as a fake trip to the server. Upon clicking the form submit button, serialize the form contents as JSON and add it to a DOM element defined as: 
+##### Election Results  
+Election results data is from [Time Magazine](https://github.com/TimeMagazine/presidential-election-results).
 
-```html
-<pre class="debug"></pre>
-```
+[all_results.csv](./data/all_results.csv), merges the original files:  
+- [results_2004.csv](./data/results_2004.csv)  
+- [results_2008.csv](./data/results_2008.csv)  
+- [results_2012.csv](./data/results_2012.csv)
 
-You should use Git to track your work in a repo that is accessible to us. You may choose to host your solution on GitHub pages or another web server so we can view the final result.
+`all_results.csv` is hosted as a [gist](https://gist.github.com/bfreeds/16bb7a411f1c88a4d988391071cfd850).
 
-Your solution will be evaluated on code quality, architecture, and organization. We really want to understand your thought process, so please document any assumptions you make in commit messages and code comments.
