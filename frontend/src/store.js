@@ -6,7 +6,8 @@ Vue.use(Vuex);
 // Vuex store registered in main.js, accessible globally as this.$store
 export default new Vuex.Store({
   state: {
-    results: {} // for election geojson, async loaded
+    states: {}, // for state geojson
+    results: {} // for election results
   },
   // mutations make changes to state
   mutations: {
