@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <h1>Election Results</h1>
-    <SubmitButton></SubmitButton>
+
+    <DataForm></DataForm>
 
     <!-- conditionally render element based on newResults array in global state -->
     <pre class="debug" v-for="(result, index) in newResults" :key="index">
@@ -11,12 +12,12 @@
 </template>
 
 <script>
-import SubmitButton from "./components/SubmitButton.vue";
+import DataForm from "./components/DataForm.vue";
 
 export default {
   name: "app",
   components: {
-    SubmitButton
+    DataForm
   },
   // lifecycle method to fetch data
   created: function() {
