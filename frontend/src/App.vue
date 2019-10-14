@@ -1,31 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Election Results</h1>
+
+    <DataForm></DataForm>
+
+    <!-- conditionally render element based on newResults array in global state -->
+    <pre class="debug" v-for="(result, index) in newResults" :key="index">
+      {{ result }}
+    </pre>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import DataForm from "./components/DataForm.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    DataForm
   },
+  // lifecycle method to fetch data
   created: function() {
     this.$store.dispatch("fetchData");
+  },
+  // use computed method to ensure this reloads on store.state changes
+  computed: {
+    newResults() {
+      return this.$store.state.newResults;
+    }
   }
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
