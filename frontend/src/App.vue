@@ -12,6 +12,9 @@ export default {
   name: "app",
   components: {
     HelloWorld
+  },
+  created: function() {
+    this.$store.dispatch("fetchData");
   }
 };
 </script>
