@@ -3,6 +3,7 @@
     <h1>Election Results</h1>
 
     <DataForm></DataForm>
+    <Map></Map>
 
     <!-- conditionally render element based on newResults array in global state -->
     <pre class="debug" v-for="(result, index) in newResults" :key="index">
@@ -13,10 +14,12 @@
 
 <script>
 import DataForm from "./components/DataForm.vue";
+import Map from "./components/Map.vue";
 
 export default {
   name: "app",
   components: {
+    Map,
     DataForm
   },
   // lifecycle method to fetch data

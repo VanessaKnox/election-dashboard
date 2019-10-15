@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     states: {}, // for state geojson
     results: {}, // for election results
-    newResults: []
+    newResults: [] // for user entered data
   },
   // mutations make changes to state
   mutations: {
@@ -17,6 +17,7 @@ export default new Vuex.Store({
       state.newResults.push(JSON.stringify(result)); // stringify to serialize input data
     },
     FETCH_DATA(state, data) {
+      console.log("data fetched");
       state.states = data.states;
       state.results = data.results;
     }
