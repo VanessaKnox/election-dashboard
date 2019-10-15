@@ -1,8 +1,6 @@
 <template>
   <div id="map">
     <h3>Election Map</h3>
-    <p>Height: {{ height }}</p>
-    <p>Width: {{ width }}</p>
 
     <!-- define our svg template -->
     <svg :height="height" :width="width">
@@ -26,28 +24,18 @@
 <script>
 import * as d3 from "d3";
 
+const height = 400;
+const width = 600;
+
 export default {
   data() {
     return {
-      width: null,
-      height: null
+      height,
+      width
     };
   },
   created: function() {
     console.log("Map.vue created");
-  },
-  mounted: function() {
-    // calculate the DOM element's dimensions to bind to svg template
-    console.log(
-      "Map.vue mounted, calculating height and width to pass to D3 visualization."
-    );
-
-    const rect = this.$el.getBoundingClientRect();
-    console.log({ rect: rect, width: rect.width, height: rect.height });
-
-    // set component height and width to calculated DOM dimensions
-    this.width = rect.width;
-    this.height = rect.height;
   },
   computed: {
     states() {
@@ -62,10 +50,11 @@ export default {
 
       const path = d3.geoPath(projection);
 
-      return this.states.features.map(d => {
+      return this.states.features.map((feature, index) => {
         return {
-          path: path(d),
-          data: d
+          path: path(feature),
+          data: feature,
+          index
         };
       });
     }
